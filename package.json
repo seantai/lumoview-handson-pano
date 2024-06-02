@@ -11,11 +11,13 @@
   "dependencies": {
     "@react-three/drei": "^9.96.00",
     "@react-three/fiber": "^8.15.13",
+    "autosize": "^6.0.1",
+    "framer-motion": "^11.2.9",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "three": "0.160.0",
-    "three-custom-shader-material": "^5.3.0",
-    "valtio": "^1.12.0"
+    "valtio": "^1.13.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
