@@ -34,7 +34,7 @@ const Panorama = () => {
       createMarker(event)
     }
 
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.metaKey) {
       createMarker(event)
     }
 
@@ -187,7 +187,7 @@ const Tutorial = () => {
           <span className="text-[#ef7975]">&#x2022;</span>
           {!isMobile ? (
             <>
-              <div className="border rounded-xl border-[#FE3B1F] px-2 py-[2px]">CTRL</div>
+              <div className="border rounded-xl border-[#FE3B1F] px-2 py-[2px]">CTRL / CMD</div>
               <div className="py-[2px]">+ CLICK</div>
             </>
           ) : (
