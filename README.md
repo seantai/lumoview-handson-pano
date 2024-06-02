@@ -1,7 +1,3 @@
-# r3f-vite-boiler
+# lumoview handson panorama
 
-_vite tailwind glsl valtio_
-
-`pnpm i`
-
-`pnpm dev`
+https://www.notion.so/lumoview/Hands-on-Task-for-Sean-Software-ThreeJS-68e858dd41864335a16265aec6884ad9

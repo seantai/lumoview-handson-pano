@@ -14,7 +14,7 @@ const markerStore = proxy({
 
 // using the inside of a sphere to show the equirectangular image
 const Panorama = () => {
-  const snap = useSnapshot(markerStore)
+  const markerSnapshot = useSnapshot(markerStore)
 
   const [pointerDown, setPointerDown] = useState(false)
 
@@ -53,7 +53,6 @@ const Panorama = () => {
     const directionVector = new Vector3().subVectors(marker.position, new Vector3(0, 0, 0)).normalize()
 
     marker.lookAt(directionVector)
-    marker.userData.directionVector = directionVector
 
     markerStore.markers.push(marker)
   }
@@ -79,7 +78,7 @@ const Panorama = () => {
       </mesh>
 
       {/* the comments */}
-      {snap.markers.map((marker) => {
+      {markerSnapshot.markers.map((marker) => {
         return <Comment {...{ marker }} key={marker.userData.id} />
       })}
     </>
@@ -88,7 +87,6 @@ const Panorama = () => {
 
 const Comment = ({ marker }) => {
   const [text, setText] = useState('')
-  const htmlRef = useRef()
 
   const handleChange = (event) => {
     setText(event.target.value)
@@ -105,10 +103,10 @@ const Comment = ({ marker }) => {
   }
 
   return (
-    <mesh position={marker.position} rotation={marker.rotation} transform={true}>
-      <sphereGeometry args={[0.2, 10, 10]} />
+    <mesh position={marker.position} rotation={marker.rotation}>
+      <icosahedronGeometry args={[0.2, 10, 10]} />
       <meshMatcapMaterial color="#FE3B1F" />
-      <Html ref={htmlRef} position={[-0.1, -0.3, 0]}>
+      <Html position={[-0.1, -0.3, 0]}>
         <textarea
           ref={(textarea) => {
             if (textarea) {
@@ -183,7 +181,7 @@ const Tutorial = () => {
         <div className="text-[#FE3B1F] flex space-x-3 items-baseline">
           <span className="text-[#ef7975]">&#x2022;</span>
           <p>DRAG</p>
-          <p className="text-xl text-[#ef7975]">to rotate image</p>
+          <p className="text-xl text-[#ddbebe]">to rotate image</p>
         </div>
         <div className="text-[#FE3B1F] flex space-x-3 items-baseline">
           <span className="text-[#ef7975]">&#x2022;</span>
@@ -195,7 +193,7 @@ const Tutorial = () => {
           ) : (
             <div className="border rounded-xl border-[#FE3B1F] px-2 py-[2px]">DOUBLE TAP</div>
           )}
-          <p className="text-xl text-[#ef7975]">to add comment</p>
+          <p className="text-xl text-[#ddbebe]">to add comment</p>
         </div>
       </div>
     </motion.div>
